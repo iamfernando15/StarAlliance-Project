@@ -1,0 +1,58 @@
+﻿@model IEnumerable<S.A.Models.Flight_Luggage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Registrar", "InsertarFlightLuggage")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Luggage_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Luggage_Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Extra_Luggage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Extra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passenger.Fst_Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Luggage_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Luggage_Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Extra_Luggage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Extra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passenger.Fst_Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "ActualizarFlightLuggage", new { id=item.ID_Luggage }) |
+       
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_Luggage })
+        </td>
+    </tr>
+}
+
+</table>

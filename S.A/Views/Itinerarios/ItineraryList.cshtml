@@ -1,0 +1,102 @@
+﻿@model IEnumerable<S.A.Models.Itinerario>
+
+@{
+	ViewBag.Title = "ITINERARIO DE VUELO";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+	<a class="btn btn-success" href="@Url.Action("exportReport")">Descargar Reporte</a>
+</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">Información de vuelos</h6>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.Airline)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Country_Origin)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Departure_DateTime)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Country_Destination)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Arrival_DateTime)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Det_Ticket.ID_Ticket)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Flight.ID_Flight)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Flight_Class.ID_Flight_Class)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Airline)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Country_Origin)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Departure_DateTime)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Country_Destination)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Arrival_DateTime)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Det_Ticket.ID_Ticket)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Flight.ID_Flight)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Flight_Class.ID_Flight_Class)
+							</td>
+							<td>
+								@Html.ActionLink("Edit", "Edit", new { id = item.ID_Itinerary }) |
+								@Html.ActionLink("Details", "Details", new { id = item.ID_Itinerary }) |
+								@Html.ActionLink("Delete", "Delete", new { id = item.ID_Itinerary })
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+

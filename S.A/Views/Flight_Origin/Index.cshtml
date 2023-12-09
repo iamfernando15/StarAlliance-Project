@@ -1,0 +1,76 @@
+﻿@model IEnumerable<S.A.Models.Flight_Origin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Registrar", "InsertFlightOrigin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Airport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Airline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departure_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passenger.Fst_Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Airport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Airline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departure_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passenger.Fst_Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "UpdateFlightOrigin", new { id=item.ID_Origin }) |
+         
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_Origin })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<S.A.Models.Cancellation>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Registrar", "RegistrarCancelacion")
+</p>
+
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">Información de Cancelaciones</h6>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.Cancellation_Date)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Reason)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Refund)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Passenger.Fst_Nombre)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Det_Ticket.ID_Ticket)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Cancellation_Date)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Reason)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Refund)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Passenger.Fst_Nombre)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Det_Ticket.ID_Ticket)
+							</td>
+							<td>
+								@Html.ActionLink("Editar", "UpdateCancellation", new { id = item.ID_Cancellation }) |
+								
+								@Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Cancellation })
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+

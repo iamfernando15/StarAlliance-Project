@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StarAllianceModelOFCStoreContainer" CdmEntityContainer="StarAllianceEntitiesOFFC">
+    <EntitySetMapping Name="Cancellation">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Cancellation">
+        <MappingFragment StoreEntitySet="Cancellation">
+          <ScalarProperty Name="ID_Cancellation" ColumnName="ID_Cancellation" />
+          <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Cancellation_Date" ColumnName="Cancellation_Date" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Refund" ColumnName="Refund" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Det_Ticket">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Det_Ticket">
+        <MappingFragment StoreEntitySet="Det_Ticket">
+          <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="ID_Flight_Class" ColumnName="ID_Flight_Class" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="ID_Seat" ColumnName="ID_Seat" />
+          <ScalarProperty Name="Bought_Ticket" ColumnName="Bought_Ticket" />
+          <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Flight">
+        <MappingFragment StoreEntitySet="Flight">
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="ID_Origin" ColumnName="ID_Origin" />
+          <ScalarProperty Name="ID_Destination" ColumnName="ID_Destination" />
+          <ScalarProperty Name="ID_FlightStops" ColumnName="ID_FlightStops" />
+          <ScalarProperty Name="ID_Luggage" ColumnName="ID_Luggage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Class">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Flight_Class">
+        <MappingFragment StoreEntitySet="Flight_Class">
+          <ScalarProperty Name="ID_Flight_Class" ColumnName="ID_Flight_Class" />
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="Bussines_Class" ColumnName="Bussines_Class" />
+          <ScalarProperty Name="Premium_Class" ColumnName="Premium_Class" />
+          <ScalarProperty Name="Tourist_Class" ColumnName="Tourist_Class" />
+          <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Destination">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Flight_Destination">
+        <MappingFragment StoreEntitySet="Flight_Destination">
+          <ScalarProperty Name="ID_Destination" ColumnName="ID_Destination" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Airport" ColumnName="Airport" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Destiny_Price" ColumnName="Destiny_Price" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Luggage">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Flight_Luggage">
+        <MappingFragment StoreEntitySet="Flight_Luggage">
+          <ScalarProperty Name="ID_Luggage" ColumnName="ID_Luggage" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Luggage_Type" ColumnName="Luggage_Type" />
+          <ScalarProperty Name="Luggage_Weight" ColumnName="Luggage_Weight" />
+          <ScalarProperty Name="Extra_Luggage" ColumnName="Extra_Luggage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Origin">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Flight_Origin">
+        <MappingFragment StoreEntitySet="Flight_Origin">
+          <ScalarProperty Name="ID_Origin" ColumnName="ID_Origin" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Airport" ColumnName="Airport" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Airline" ColumnName="Airline" />
+          <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Origin_Price" ColumnName="Origin_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Seats">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Flight_Seats">
+        <MappingFragment StoreEntitySet="Flight_Seats">
+          <ScalarProperty Name="ID_Seat" ColumnName="ID_Seat" />
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="Seat_Location" ColumnName="Seat_Location" />
+          <ScalarProperty Name="Seat_Number" ColumnName="Seat_Number" />
+          <ScalarProperty Name="Assigned_Seats" ColumnName="Assigned_Seats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Stops">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Flight_Stops">
+        <MappingFragment StoreEntitySet="Flight_Stops">
+          <ScalarProperty Name="ID_FlightStops" ColumnName="ID_FlightStops" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Transhipment" ColumnName="Transhipment" />
+          <ScalarProperty Name="Partner_Airline" ColumnName="Partner_Airline" />
+          <ScalarProperty Name="Airport" ColumnName="Airport" />
+          <ScalarProperty Name="StopTime" ColumnName="StopTime" />
+          <ScalarProperty Name="Transhipment_Price" ColumnName="Transhipment_Price" />
+          <ScalarProperty Name="PA_Price" ColumnName="PA_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passenger">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Passenger">
+        <MappingFragment StoreEntitySet="Passenger">
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Fst_Nombre" ColumnName="Fst_Nombre" />
+          <ScalarProperty Name="Snd_Nombre" ColumnName="Snd_Nombre" />
+          <ScalarProperty Name="Fst_Apellido" ColumnName="Fst_Apellido" />
+          <ScalarProperty Name="Snd_Apellido" ColumnName="Snd_Apellido" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Identification" ColumnName="Identification" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passport">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Passport">
+        <MappingFragment StoreEntitySet="Passport">
+          <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Passport_Type" ColumnName="Passport_Type" />
+          <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+          <ScalarProperty Name="Passport_Num" ColumnName="Passport_Num" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visa">
+      <EntityTypeMapping TypeName="StarAllianceModelOFC.Visa">
+        <MappingFragment StoreEntitySet="Visa">
+          <ScalarProperty Name="ID_Visa" ColumnName="ID_Visa" />
+          <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Issuing_Postname" ColumnName="Issuing_Postname" />
+          <ScalarProperty Name="Control_Number" ColumnName="Control_Number" />
+          <ScalarProperty Name="Visa_Num" ColumnName="Visa_Num" />
+          <ScalarProperty Name="Visa_Type" ColumnName="Visa_Type" />
+          <ScalarProperty Name="Visa_Class" ColumnName="Visa_Class" />
+          <ScalarProperty Name="Entries" ColumnName="Entries" />
+          <ScalarProperty Name="Annotation" ColumnName="Annotation" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RegistrarBoleto" FunctionName="StarAllianceModelOFC.Store.RegistrarBoleto" />
+    <FunctionImportMapping FunctionImportName="RegistrarCancelacion" FunctionName="StarAllianceModelOFC.Store.RegistrarCancelacion" />
+    <FunctionImportMapping FunctionImportName="RegistrarItinerario" FunctionName="StarAllianceModelOFC.Store.RegistrarItinerario" />
+    <FunctionImportMapping FunctionImportName="RegistrarPasajero" FunctionName="StarAllianceModelOFC.Store.RegistrarPasajero" />
+    <FunctionImportMapping FunctionImportName="RegistrarPasaporte" FunctionName="StarAllianceModelOFC.Store.RegistrarPasaporte" />
+    <FunctionImportMapping FunctionImportName="RegistrarVisa" FunctionName="StarAllianceModelOFC.Store.RegistrarVisa" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarUsuario" FunctionName="StarAllianceModelOFC.Store.sp_RegistrarUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_ValidarUsuario" FunctionName="StarAllianceModelOFC.Store.sp_ValidarUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_Verify_Boleto" FunctionName="StarAllianceModelOFC.Store.sp_Verify_Boleto" />
+  </EntityContainerMapping>
+</Mapping>

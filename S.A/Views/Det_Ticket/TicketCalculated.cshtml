@@ -1,0 +1,11 @@
+﻿
+@{
+	ViewBag.Title = "TicketCalculated";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>Precio Total: $@ViewBag.TotalPrice</p>
+
+@Html.ActionLink("Regresa para calcular", "CalculateTicketPrice", "Det_Ticket", null, new { @class = "btn btn-primary" })

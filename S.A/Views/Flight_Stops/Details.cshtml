@@ -1,0 +1,75 @@
+﻿@model S.A.Models.Flight_Stops
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Flight_Stops</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Transhipment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transhipment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Partner_Airline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partner_Airline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Airport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Airport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StopTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StopTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transhipment_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transhipment_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PA_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PA_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passenger.Fst_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passenger.Fst_Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_FlightStops }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

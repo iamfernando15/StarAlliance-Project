@@ -1,0 +1,83 @@
+﻿@model S.A.Models.Passport
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Passport</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Passport_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passport_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passport_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passport_Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nationality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passenger.Fst_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passenger.Fst_Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Passport }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

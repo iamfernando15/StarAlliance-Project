@@ -1,0 +1,110 @@
+﻿@model IEnumerable<S.A.Models.Passport>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+	@Html.ActionLink("Registrar", "InsertarPasaporte")
+</p>
+
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">Información de pasaportes</h6>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.Passport_Type)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Country_Code)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Passport_Num)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Nationality)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Gender)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.IssueDate)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.ExpiryDate)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Passenger.Fst_Nombre)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Passport_Type)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Country_Code)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Passport_Num)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Nationality)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Gender)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.IssueDate)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.ExpiryDate)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Passenger.Fst_Nombre)
+							</td>
+							<td>
+								@Html.ActionLink("Editar", "ActualizarPasaporte", new { id = item.ID_Passport }) |
+								
+								@Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Passport })
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

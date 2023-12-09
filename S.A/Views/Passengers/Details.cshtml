@@ -1,0 +1,91 @@
+﻿@model S.A.Models.Passenger
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Passenger</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fst_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fst_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Snd_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Snd_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fst_Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fst_Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Snd_Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Snd_Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Passenger }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

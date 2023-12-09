@@ -1,0 +1,96 @@
+﻿@model IEnumerable<S.A.Models.Flight_Stops>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+	@Html.ActionLink("Registrar", "InsertarFlightStop")
+</p>
+
+
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">Información de escalas</h6>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.Transhipment)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Partner_Airline)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Airport)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.StopTime)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Transhipment_Price)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.PA_Price)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Passenger.Fst_Nombre)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Transhipment)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Partner_Airline)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Airport)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.StopTime)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Transhipment_Price)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.PA_Price)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Passenger.Fst_Nombre)
+							</td>
+							<td>
+								@Html.ActionLink("Editar", "ActualizarFlightStop", new { id = item.ID_FlightStops }) |
+								
+								@Html.ActionLink("Eliminar", "Delete", new { id = item.ID_FlightStops })
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+

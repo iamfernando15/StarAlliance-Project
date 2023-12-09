@@ -1,0 +1,8 @@
+Proyecto "StarAlliance" base de datos I
+Correos:jade08@gmial.com
+        ezequiel00@gmial.com
+
+Contraseñas:admin123 - para jade
+            admin321 - para ezequiel
+la contraseña utiliza cifrado hash sha256
+ 

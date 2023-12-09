@@ -1,0 +1,78 @@
+﻿@model IEnumerable<S.A.Models.Det_Ticket>
+
+@{
+	ViewBag.Title = "BoletoList";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+	<a class="btn btn-success" href="@Url.Action("ExportReport")">Descargar Voucher</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ID_Ticket)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ID_Flight)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ID_Flight_Class)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ID_Passenger)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ID_Seat)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Bought_Ticket)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Ticket_Status)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Total_Price)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ID_Ticket)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ID_Flight)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ID_Flight_Class)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ID_Passenger)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ID_Seat)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Bought_Ticket)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Ticket_Status)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Total_Price)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+				@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+				@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+			</td>
+		</tr>
+	}
+
+</table>

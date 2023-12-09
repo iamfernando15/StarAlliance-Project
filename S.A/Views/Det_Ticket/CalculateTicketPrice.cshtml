@@ -1,0 +1,40 @@
+﻿
+@{
+	ViewBag.Title = "Calcula Precio Boleto";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Calcula Precio Boleto</h2>
+
+@using (Html.BeginForm("CalculateTicketPrice", "Det_Ticket", FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.Label("ID Ticket:")
+		@Html.TextBox("ID_Ticket", null, new { @class = "form-control" })
+	</div>
+
+	<div class="form-group">
+		@Html.Label("ID Class:")
+		@Html.TextBox("id_class", null, new { @class = "form-control" })
+	</div>
+
+	<div class="form-group">
+		@Html.Label("ID Destination:")
+		@Html.TextBox("Id_destination", null, new { @class = "form-control" })
+	</div>
+
+	<div class="form-group">
+		@Html.Label("ID Stop:")
+		@Html.TextBox("ID_STOP", null, new { @class = "form-control" })
+	</div>
+
+	<div class="form-group">
+		@Html.Label("ID Luggage:")
+		@Html.TextBox("id_luggage", null, new { @class = "form-control" })
+	</div>
+
+	<button type="submit" class="btn btn-primary">Calcular Precio</button>
+}
+
+

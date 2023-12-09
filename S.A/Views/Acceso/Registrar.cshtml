@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Registrate</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="~/Content/css/Login.css" rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+			<!-- Tabs Titles -->
+			<!-- Icon -->
+			<div class="fadeIn first">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Logo_Star_Alliance_cropped.png" id="icon" alt="User Icon" />
+			</div>
+
+			<!-- Login Form -->
+			<form action="@Url.Action("Registrar", "Acceso")" method="post">
+				<input type="text" id="login" class="fadeIn second" name="Correo" placeholder="Correo">
+				<input type="text" id="password" class="fadeIn third" name="Clave" placeholder="Contraseña">
+				<input type="text" id="password" class="fadeIn third" name="ConfirmarClave" placeholder="Confirmar Contraseña">
+
+				@if (ViewData["Mensaje"] != null)
+				{
+					<div class="alert alert-danger" role="alert">
+						@ViewData["Mensaje"]
+					</div>
+				}
+
+				<input type="submit" class="fadeIn fourth" value="Registrarse">
+			</form>
+
+			<!-- Remind Passowrd -->
+			<div id="formFooter">
+				<a class="underlineHover" href="@Url.Action("Login", "Acceso")">¿Ya tienes una cuenta?</a>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<
+</body>
+
+
+
+</html>

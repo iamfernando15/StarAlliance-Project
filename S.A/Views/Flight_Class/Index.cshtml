@@ -1,0 +1,52 @@
+﻿@model IEnumerable<S.A.Models.Flight_Class>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Registrar", "InsertarFlightClass")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bussines_Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Premium_Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tourist_Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flight.ID_Flight)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bussines_Class)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Premium_Class)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tourist_Class)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flight.ID_Flight)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "ActualizarFlightClass", new { id=item.ID_Flight_Class }) |
+          
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_Flight_Class })
+        </td>
+    </tr>
+}
+
+</table>

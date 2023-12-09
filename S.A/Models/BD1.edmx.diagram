@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d109ab5195b6484692d9b8f720328780" Name="Diagram1">
+        <EntityTypeShape EntityType="StarAllianceModel1.Cancellation" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Det_Ticket" Width="1.5" PointX="6" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Flight" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Flight_Class" Width="1.5" PointX="7.5" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Flight_Destination" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Flight_Luggage" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Flight_Origin" Width="1.5" PointX="3" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Flight_Seats" Width="1.5" PointX="7.5" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Flight_Stops" Width="1.5" PointX="3" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Itinerario" Width="1.5" PointX="9.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Passenger" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Passport" Width="1.5" PointX="3" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.USUARIO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StarAllianceModel1.Visa" Width="1.5" PointX="5.25" PointY="30.25" IsExpanded="true" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Cancellat__ID_Pa__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Cancellat__ID_Ti__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Det_Ticke__ID_Fl__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Det_Ticke__ID_Fl__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Det_Ticke__ID_Pa__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Det_Ticke__ID_Se__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Itinerari__ID_Ti__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight__ID_Desti__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight__ID_Fligh__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight__ID_Lugga__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight__ID_Origi__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight__ID_Passe__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight_Cl__ID_Fl__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight_Se__ID_Fl__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Itinerari__ID_Fl__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Itinerari__ID_Fl__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight_De__ID_Pa__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight_Lu__ID_Pa__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight_Or__ID_Pa__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Flight_St__ID_Pa__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Itinerari__ID_Pa__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Passport__ID_Pas__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Visa__ID_Passeng__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="StarAllianceModel1.FK__Visa__ID_Passpor__3F466844" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StarAllianceModel1.sysdiagrams" Width="1.5" PointX="3.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

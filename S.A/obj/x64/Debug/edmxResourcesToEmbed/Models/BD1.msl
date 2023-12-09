@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StarAllianceModel1StoreContainer" CdmEntityContainer="StarAllianceEntities1">
+    <EntitySetMapping Name="Cancellation">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Cancellation">
+        <MappingFragment StoreEntitySet="Cancellation">
+          <ScalarProperty Name="ID_Cancellation" ColumnName="ID_Cancellation" />
+          <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Cancellation_Date" ColumnName="Cancellation_Date" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Refund" ColumnName="Refund" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Det_Ticket">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Det_Ticket">
+        <MappingFragment StoreEntitySet="Det_Ticket">
+          <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="ID_Flight_Class" ColumnName="ID_Flight_Class" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="ID_Seat" ColumnName="ID_Seat" />
+          <ScalarProperty Name="Bought_Ticket" ColumnName="Bought_Ticket" />
+          <ScalarProperty Name="Ticket_Status" ColumnName="Ticket_Status" />
+          <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Flight">
+        <MappingFragment StoreEntitySet="Flight">
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="ID_Origin" ColumnName="ID_Origin" />
+          <ScalarProperty Name="ID_Destination" ColumnName="ID_Destination" />
+          <ScalarProperty Name="ID_FlightStops" ColumnName="ID_FlightStops" />
+          <ScalarProperty Name="ID_Luggage" ColumnName="ID_Luggage" />
+          <ScalarProperty Name="TotalSeats" ColumnName="TotalSeats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Class">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Flight_Class">
+        <MappingFragment StoreEntitySet="Flight_Class">
+          <ScalarProperty Name="ID_Flight_Class" ColumnName="ID_Flight_Class" />
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="Bussines_Class" ColumnName="Bussines_Class" />
+          <ScalarProperty Name="Premium_Class" ColumnName="Premium_Class" />
+          <ScalarProperty Name="Tourist_Class" ColumnName="Tourist_Class" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Destination">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Flight_Destination">
+        <MappingFragment StoreEntitySet="Flight_Destination">
+          <ScalarProperty Name="ID_Destination" ColumnName="ID_Destination" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Airport" ColumnName="Airport" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Destiny_Price" ColumnName="Destiny_Price" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Luggage">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Flight_Luggage">
+        <MappingFragment StoreEntitySet="Flight_Luggage">
+          <ScalarProperty Name="ID_Luggage" ColumnName="ID_Luggage" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Luggage_Type" ColumnName="Luggage_Type" />
+          <ScalarProperty Name="Luggage_Weight" ColumnName="Luggage_Weight" />
+          <ScalarProperty Name="Extra_Luggage" ColumnName="Extra_Luggage" />
+          <ScalarProperty Name="Total_Extra" ColumnName="Total_Extra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Origin">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Flight_Origin">
+        <MappingFragment StoreEntitySet="Flight_Origin">
+          <ScalarProperty Name="ID_Origin" ColumnName="ID_Origin" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Airport" ColumnName="Airport" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Airline" ColumnName="Airline" />
+          <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Seats">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Flight_Seats">
+        <MappingFragment StoreEntitySet="Flight_Seats">
+          <ScalarProperty Name="ID_Seat" ColumnName="ID_Seat" />
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="Seat_Location" ColumnName="Seat_Location" />
+          <ScalarProperty Name="Seat_Number" ColumnName="Seat_Number" />
+          <ScalarProperty Name="Assigned_Seats" ColumnName="Assigned_Seats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Stops">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Flight_Stops">
+        <MappingFragment StoreEntitySet="Flight_Stops">
+          <ScalarProperty Name="ID_FlightStops" ColumnName="ID_FlightStops" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Transhipment" ColumnName="Transhipment" />
+          <ScalarProperty Name="Partner_Airline" ColumnName="Partner_Airline" />
+          <ScalarProperty Name="Airport" ColumnName="Airport" />
+          <ScalarProperty Name="StopTime" ColumnName="StopTime" />
+          <ScalarProperty Name="Transhipment_Price" ColumnName="Transhipment_Price" />
+          <ScalarProperty Name="PA_Price" ColumnName="PA_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Itinerario">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Itinerario">
+        <MappingFragment StoreEntitySet="Itinerario">
+          <ScalarProperty Name="ID_Itinerary" ColumnName="ID_Itinerary" />
+          <ScalarProperty Name="ID_Flight" ColumnName="ID_Flight" />
+          <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+          <ScalarProperty Name="Airline" ColumnName="Airline" />
+          <ScalarProperty Name="Country_Origin" ColumnName="Country_Origin" />
+          <ScalarProperty Name="Departure_DateTime" ColumnName="Departure_DateTime" />
+          <ScalarProperty Name="Country_Destination" ColumnName="Country_Destination" />
+          <ScalarProperty Name="Arrival_DateTime" ColumnName="Arrival_DateTime" />
+          <ScalarProperty Name="ID_Flight_Class" ColumnName="ID_Flight_Class" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passenger">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Passenger">
+        <MappingFragment StoreEntitySet="Passenger">
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Fst_Nombre" ColumnName="Fst_Nombre" />
+          <ScalarProperty Name="Snd_Nombre" ColumnName="Snd_Nombre" />
+          <ScalarProperty Name="Fst_Apellido" ColumnName="Fst_Apellido" />
+          <ScalarProperty Name="Snd_Apellido" ColumnName="Snd_Apellido" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Identification" ColumnName="Identification" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passport">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Passport">
+        <MappingFragment StoreEntitySet="Passport">
+          <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Passport_Type" ColumnName="Passport_Type" />
+          <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+          <ScalarProperty Name="Passport_Num" ColumnName="Passport_Num" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="StarAllianceModel1.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visa">
+      <EntityTypeMapping TypeName="StarAllianceModel1.Visa">
+        <MappingFragment StoreEntitySet="Visa">
+          <ScalarProperty Name="ID_Visa" ColumnName="ID_Visa" />
+          <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
+          <ScalarProperty Name="ID_Passenger" ColumnName="ID_Passenger" />
+          <ScalarProperty Name="Issuing_Postname" ColumnName="Issuing_Postname" />
+          <ScalarProperty Name="Control_Number" ColumnName="Control_Number" />
+          <ScalarProperty Name="Visa_Num" ColumnName="Visa_Num" />
+          <ScalarProperty Name="Visa_Type" ColumnName="Visa_Type" />
+          <ScalarProperty Name="Visa_Class" ColumnName="Visa_Class" />
+          <ScalarProperty Name="Entries" ColumnName="Entries" />
+          <ScalarProperty Name="Annotation" ColumnName="Annotation" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ActualizarAsientosReservados" FunctionName="StarAllianceModel1.Store.ActualizarAsientosReservados" />
+    <FunctionImportMapping FunctionImportName="LlenarItinerario" FunctionName="StarAllianceModel1.Store.LlenarItinerario" />
+    <FunctionImportMapping FunctionImportName="RegistrarBoleto" FunctionName="StarAllianceModel1.Store.RegistrarBoleto" />
+    <FunctionImportMapping FunctionImportName="RegistrarCancelacion" FunctionName="StarAllianceModel1.Store.RegistrarCancelacion" />
+    <FunctionImportMapping FunctionImportName="RegistrarNumeroAsientos" FunctionName="StarAllianceModel1.Store.RegistrarNumeroAsientos" />
+    <FunctionImportMapping FunctionImportName="RegistrarPasajero" FunctionName="StarAllianceModel1.Store.RegistrarPasajero" />
+    <FunctionImportMapping FunctionImportName="RegistrarPasaporte" FunctionName="StarAllianceModel1.Store.RegistrarPasaporte" />
+    <FunctionImportMapping FunctionImportName="RegistrarVisa" FunctionName="StarAllianceModel1.Store.RegistrarVisa" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarUsuario" FunctionName="StarAllianceModel1.Store.sp_RegistrarUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_ValidarUsuario" FunctionName="StarAllianceModel1.Store.sp_ValidarUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_Verify_Boleto" FunctionName="StarAllianceModel1.Store.sp_Verify_Boleto" />
+    <FunctionImportMapping FunctionImportName="Baj_DeltFlightDestination" FunctionName="StarAllianceModel1.Store.Baj_DeltFlightDestination" />
+    <FunctionImportMapping FunctionImportName="BAJA_FlightOrigin" FunctionName="StarAllianceModel1.Store.BAJA_FlightOrigin" />
+    <FunctionImportMapping FunctionImportName="CalculatePassengerRefund" FunctionName="StarAllianceModel1.Store.CalculatePassengerRefund" />
+    <FunctionImportMapping FunctionImportName="Del_BjaFlightLuggage" FunctionName="StarAllianceModel1.Store.Del_BjaFlightLuggage" />
+    <FunctionImportMapping FunctionImportName="DeleteFlightStop" FunctionName="StarAllianceModel1.Store.DeleteFlightStop" />
+    <FunctionImportMapping FunctionImportName="InsertFlightDestination" FunctionName="StarAllianceModel1.Store.InsertFlightDestination" />
+    <FunctionImportMapping FunctionImportName="InsertFlightLuggage" FunctionName="StarAllianceModel1.Store.InsertFlightLuggage" />
+    <FunctionImportMapping FunctionImportName="InsertFlightOrigin" FunctionName="StarAllianceModel1.Store.InsertFlightOrigin" />
+    <FunctionImportMapping FunctionImportName="InsertFlightStop" FunctionName="StarAllianceModel1.Store.InsertFlightStop" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="StarAllianceModel1.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="StarAllianceModel1.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteCancellation" FunctionName="StarAllianceModel1.Store.sp_DeleteCancellation" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteDetTicket" FunctionName="StarAllianceModel1.Store.sp_DeleteDetTicket" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteFlightClass" FunctionName="StarAllianceModel1.Store.sp_DeleteFlightClass" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteFlightSeat" FunctionName="StarAllianceModel1.Store.sp_DeleteFlightSeat" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteItinerary" FunctionName="StarAllianceModel1.Store.sp_DeleteItinerary" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="StarAllianceModel1.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="StarAllianceModel1.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="StarAllianceModel1.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="StarAllianceModel1.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="StarAllianceModel1.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_InsertFlight" FunctionName="StarAllianceModel1.Store.sp_InsertFlight" />
+    <FunctionImportMapping FunctionImportName="sp_InsertFlightClass" FunctionName="StarAllianceModel1.Store.sp_InsertFlightClass" />
+    <FunctionImportMapping FunctionImportName="sp_InsertFlightSeat" FunctionName="StarAllianceModel1.Store.sp_InsertFlightSeat" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="StarAllianceModel1.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateCancellation" FunctionName="StarAllianceModel1.Store.sp_UpdateCancellation" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateDetTicket" FunctionName="StarAllianceModel1.Store.sp_UpdateDetTicket" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateFlight" FunctionName="StarAllianceModel1.Store.sp_UpdateFlight" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateFlightClass" FunctionName="StarAllianceModel1.Store.sp_UpdateFlightClass" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateFlightSeat" FunctionName="StarAllianceModel1.Store.sp_UpdateFlightSeat" />
+    <FunctionImportMapping FunctionImportName="sp_UpdatePassport" FunctionName="StarAllianceModel1.Store.sp_UpdatePassport" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateVisa" FunctionName="StarAllianceModel1.Store.sp_UpdateVisa" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="StarAllianceModel1.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="UpdateFlightDestination" FunctionName="StarAllianceModel1.Store.UpdateFlightDestination" />
+    <FunctionImportMapping FunctionImportName="UpdateFlightLuggage" FunctionName="StarAllianceModel1.Store.UpdateFlightLuggage" />
+    <FunctionImportMapping FunctionImportName="UpdateFlightOrigin" FunctionName="StarAllianceModel1.Store.UpdateFlightOrigin" />
+    <FunctionImportMapping FunctionImportName="UpdateFlightStop" FunctionName="StarAllianceModel1.Store.UpdateFlightStop" />
+    <FunctionImportMapping FunctionImportName="UpdatePassenger" FunctionName="StarAllianceModel1.Store.UpdatePassenger" />
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="StarAllianceModel1.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="FACTURA_TICKET" FunctionName="StarAllianceModel1.Store.FACTURA_TICKET" />
+  </EntityContainerMapping>
+</Mapping>

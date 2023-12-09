@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StarAllianceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cancellation">
+    <Key>
+      <PropertyRef Name="ID_Cancellation" />
+    </Key>
+    <Property Name="ID_Cancellation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Ticket" Type="Int32" Nullable="false" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="Cancellation_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reason" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Refund" Type="Boolean" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Cancellat__ID_Pa__6C190EBB" FromRole="Cancellation" ToRole="Passenger" />
+    <NavigationProperty Name="Det_Ticket" Relationship="Self.FK__Cancellat__ID_Ti__6B24EA82" FromRole="Cancellation" ToRole="Det_Ticket" />
+  </EntityType>
+  <EntityType Name="Det_Ticket">
+    <Key>
+      <PropertyRef Name="ID_Ticket" />
+    </Key>
+    <Property Name="ID_Ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Flight" Type="Int32" Nullable="false" />
+    <Property Name="ID_Flight_Class" Type="Int32" Nullable="false" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="ID_Seat" Type="Int32" Nullable="false" />
+    <Property Name="Bought_Ticket" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Ticket_Status" Type="Boolean" />
+    <NavigationProperty Name="Cancellation" Relationship="Self.FK__Cancellat__ID_Ti__6B24EA82" FromRole="Det_Ticket" ToRole="Cancellation" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Det_Ticke__ID_Fl__5BE2A6F2" FromRole="Det_Ticket" ToRole="Flight" />
+    <NavigationProperty Name="Flight_Class" Relationship="Self.FK__Det_Ticke__ID_Fl__5CD6CB2B" FromRole="Det_Ticket" ToRole="Flight_Class" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Det_Ticke__ID_Pa__5DCAEF64" FromRole="Det_Ticket" ToRole="Passenger" />
+    <NavigationProperty Name="Flight_Seats" Relationship="Self.FK__Det_Ticke__ID_Se__5EBF139D" FromRole="Det_Ticket" ToRole="Flight_Seats" />
+    <NavigationProperty Name="Itinerario" Relationship="Self.FK__Itinerari__ID_Ti__0C85DE4D" FromRole="Det_Ticket" ToRole="Itinerario" />
+    <Property Name="Total_Price" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="ID_Flight" />
+    </Key>
+    <Property Name="ID_Flight" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="ID_Origin" Type="Int32" Nullable="false" />
+    <Property Name="ID_Destination" Type="Int32" Nullable="false" />
+    <Property Name="ID_FlightStops" Type="Int32" Nullable="false" />
+    <Property Name="ID_Luggage" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Det_Ticket" Relationship="Self.FK__Det_Ticke__ID_Fl__5BE2A6F2" FromRole="Flight" ToRole="Det_Ticket" />
+    <NavigationProperty Name="Flight_Destination" Relationship="Self.FK__Flight__ID_Desti__5165187F" FromRole="Flight" ToRole="Flight_Destination" />
+    <NavigationProperty Name="Flight_Stops" Relationship="Self.FK__Flight__ID_Fligh__52593CB8" FromRole="Flight" ToRole="Flight_Stops" />
+    <NavigationProperty Name="Flight_Luggage" Relationship="Self.FK__Flight__ID_Lugga__534D60F1" FromRole="Flight" ToRole="Flight_Luggage" />
+    <NavigationProperty Name="Flight_Origin" Relationship="Self.FK__Flight__ID_Origi__5070F446" FromRole="Flight" ToRole="Flight_Origin" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Flight__ID_Passe__4F7CD00D" FromRole="Flight" ToRole="Passenger" />
+    <NavigationProperty Name="Flight_Class" Relationship="Self.FK__Flight_Cl__ID_Fl__5629CD9C" FromRole="Flight" ToRole="Flight_Class" />
+    <NavigationProperty Name="Flight_Seats" Relationship="Self.FK__Flight_Se__ID_Fl__59063A47" FromRole="Flight" ToRole="Flight_Seats" />
+    <NavigationProperty Name="Itinerario" Relationship="Self.FK__Itinerari__ID_Fl__0B91BA14" FromRole="Flight" ToRole="Itinerario" />
+    <Property Name="TotalSeats" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Flight_Class">
+    <Key>
+      <PropertyRef Name="ID_Flight_Class" />
+    </Key>
+    <Property Name="ID_Flight_Class" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Flight" Type="Int32" Nullable="false" />
+    <Property Name="Bussines_Class" Type="Boolean" />
+    <Property Name="Premium_Class" Type="Boolean" />
+    <Property Name="Tourist_Class" Type="Boolean" />
+    <Property Name="Total_Price" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="Det_Ticket" Relationship="Self.FK__Det_Ticke__ID_Fl__5CD6CB2B" FromRole="Flight_Class" ToRole="Det_Ticket" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight_Cl__ID_Fl__5629CD9C" FromRole="Flight_Class" ToRole="Flight" />
+    <NavigationProperty Name="Itinerario" Relationship="Self.FK__Itinerari__ID_Fl__0D7A0286" FromRole="Flight_Class" ToRole="Itinerario" />
+  </EntityType>
+  <EntityType Name="Flight_Destination">
+    <Key>
+      <PropertyRef Name="ID_Destination" />
+    </Key>
+    <Property Name="ID_Destination" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="Airport" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Destiny_Price" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Arrival_Time" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight__ID_Desti__5165187F" FromRole="Flight_Destination" ToRole="Flight" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Flight_De__ID_Pa__49C3F6B7" FromRole="Flight_Destination" ToRole="Passenger" />
+  </EntityType>
+  <EntityType Name="Flight_Luggage">
+    <Key>
+      <PropertyRef Name="ID_Luggage" />
+    </Key>
+    <Property Name="ID_Luggage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="Luggage_Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Luggage_Weight" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Extra_Luggage" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight__ID_Lugga__534D60F1" FromRole="Flight_Luggage" ToRole="Flight" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Flight_Lu__ID_Pa__4CA06362" FromRole="Flight_Luggage" ToRole="Passenger" />
+    <Property Name="Total_Extra" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Flight_Origin">
+    <Key>
+      <PropertyRef Name="ID_Origin" />
+    </Key>
+    <Property Name="ID_Origin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="Airport" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Airline" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Departure_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Origin_Price" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight__ID_Origi__5070F446" FromRole="Flight_Origin" ToRole="Flight" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Flight_Or__ID_Pa__440B1D61" FromRole="Flight_Origin" ToRole="Passenger" />
+  </EntityType>
+  <EntityType Name="Flight_Seats">
+    <Key>
+      <PropertyRef Name="ID_Seat" />
+    </Key>
+    <Property Name="ID_Seat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Flight" Type="Int32" Nullable="false" />
+    <Property Name="Seat_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Seat_Number" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Assigned_Seats" Type="Int32" />
+    <NavigationProperty Name="Det_Ticket" Relationship="Self.FK__Det_Ticke__ID_Se__5EBF139D" FromRole="Flight_Seats" ToRole="Det_Ticket" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight_Se__ID_Fl__59063A47" FromRole="Flight_Seats" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="Flight_Stops">
+    <Key>
+      <PropertyRef Name="ID_FlightStops" />
+    </Key>
+    <Property Name="ID_FlightStops" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="Transhipment" Type="Boolean" Nullable="false" />
+    <Property Name="Partner_Airline" Type="Boolean" Nullable="false" />
+    <Property Name="Airport" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="StopTime" Type="DateTime" Precision="3" />
+    <Property Name="Transhipment_Price" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="PA_Price" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight__ID_Fligh__52593CB8" FromRole="Flight_Stops" ToRole="Flight" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Flight_St__ID_Pa__46E78A0C" FromRole="Flight_Stops" ToRole="Passenger" />
+  </EntityType>
+  <EntityType Name="Itinerario">
+    <Key>
+      <PropertyRef Name="ID_Itinerary" />
+    </Key>
+    <Property Name="ID_Itinerary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Flight" Type="Int32" Nullable="false" />
+    <Property Name="ID_Ticket" Type="Int32" Nullable="false" />
+    <Property Name="Airline" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Country_Origin" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Departure_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Country_Destination" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Arrival_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="ID_Flight_Class" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Det_Ticket" Relationship="Self.FK__Itinerari__ID_Ti__0C85DE4D" FromRole="Itinerario" ToRole="Det_Ticket" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Itinerari__ID_Fl__0B91BA14" FromRole="Itinerario" ToRole="Flight" />
+    <NavigationProperty Name="Flight_Class" Relationship="Self.FK__Itinerari__ID_Fl__0D7A0286" FromRole="Itinerario" ToRole="Flight_Class" />
+    <Property Name="ID_Passenger" Type="Int32" />
+    <NavigationProperty Name="Passenger" Relationship="StarAllianceModel.FK__Itinerari__ID_Pa__0F624AF8" FromRole="Itinerario" ToRole="Passenger" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="ID_Passenger" />
+    </Key>
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fst_Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Snd_Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Fst_Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Snd_Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Identification" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="Adress" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cancellation" Relationship="Self.FK__Cancellat__ID_Pa__6C190EBB" FromRole="Passenger" ToRole="Cancellation" />
+    <NavigationProperty Name="Det_Ticket" Relationship="Self.FK__Det_Ticke__ID_Pa__5DCAEF64" FromRole="Passenger" ToRole="Det_Ticket" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight__ID_Passe__4F7CD00D" FromRole="Passenger" ToRole="Flight" />
+    <NavigationProperty Name="Flight_Destination" Relationship="Self.FK__Flight_De__ID_Pa__49C3F6B7" FromRole="Passenger" ToRole="Flight_Destination" />
+    <NavigationProperty Name="Flight_Luggage" Relationship="Self.FK__Flight_Lu__ID_Pa__4CA06362" FromRole="Passenger" ToRole="Flight_Luggage" />
+    <NavigationProperty Name="Flight_Origin" Relationship="Self.FK__Flight_Or__ID_Pa__440B1D61" FromRole="Passenger" ToRole="Flight_Origin" />
+    <NavigationProperty Name="Flight_Stops" Relationship="Self.FK__Flight_St__ID_Pa__46E78A0C" FromRole="Passenger" ToRole="Flight_Stops" />
+    <NavigationProperty Name="Passport" Relationship="Self.FK__Passport__ID_Pas__3B75D760" FromRole="Passenger" ToRole="Passport" />
+    <NavigationProperty Name="Visa" Relationship="Self.FK__Visa__ID_Passeng__403A8C7D" FromRole="Passenger" ToRole="Visa" />
+    <NavigationProperty Name="Itinerario" Relationship="StarAllianceModel.FK__Itinerari__ID_Pa__0F624AF8" FromRole="Passenger" ToRole="Itinerario" />
+  </EntityType>
+  <EntityType Name="Passport">
+    <Key>
+      <PropertyRef Name="ID_Passport" />
+    </Key>
+    <Property Name="ID_Passport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="Passport_Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Country_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passport_Num" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nationality" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Passport__ID_Pas__3B75D760" FromRole="Passport" ToRole="Passenger" />
+    <NavigationProperty Name="Visa" Relationship="Self.FK__Visa__ID_Passpor__3F466844" FromRole="Passport" ToRole="Visa" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Visa">
+    <Key>
+      <PropertyRef Name="ID_Visa" />
+    </Key>
+    <Property Name="ID_Visa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Passport" Type="Int32" Nullable="false" />
+    <Property Name="ID_Passenger" Type="Int32" Nullable="false" />
+    <Property Name="Issuing_Postname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Control_Number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Visa_Num" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Visa_Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Visa_Class" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Entries" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Annotation" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Visa__ID_Passeng__403A8C7D" FromRole="Visa" ToRole="Passenger" />
+    <NavigationProperty Name="Passport" Relationship="Self.FK__Visa__ID_Passpor__3F466844" FromRole="Visa" ToRole="Passport" />
+  </EntityType>
+  <Association Name="FK__Cancellat__ID_Pa__6C190EBB">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Cancellation" Type="Self.Cancellation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Cancellation">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cancellat__ID_Ti__6B24EA82">
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="1" />
+    <End Role="Cancellation" Type="Self.Cancellation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Det_Ticket">
+        <PropertyRef Name="ID_Ticket" />
+      </Principal>
+      <Dependent Role="Cancellation">
+        <PropertyRef Name="ID_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Fl__5BE2A6F2">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Fl__5CD6CB2B">
+    <End Role="Flight_Class" Type="Self.Flight_Class" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Class">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Pa__5DCAEF64">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Se__5EBF139D">
+    <End Role="Flight_Seats" Type="Self.Flight_Seats" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Seats">
+        <PropertyRef Name="ID_Seat" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Seat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Itinerari__ID_Ti__0C85DE4D">
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="1" />
+    <End Role="Itinerario" Type="Self.Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Det_Ticket">
+        <PropertyRef Name="ID_Ticket" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Desti__5165187F">
+    <End Role="Flight_Destination" Type="Self.Flight_Destination" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Destination">
+        <PropertyRef Name="ID_Destination" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Destination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Fligh__52593CB8">
+    <End Role="Flight_Stops" Type="Self.Flight_Stops" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Stops">
+        <PropertyRef Name="ID_FlightStops" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_FlightStops" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Lugga__534D60F1">
+    <End Role="Flight_Luggage" Type="Self.Flight_Luggage" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Luggage">
+        <PropertyRef Name="ID_Luggage" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Luggage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Origi__5070F446">
+    <End Role="Flight_Origin" Type="Self.Flight_Origin" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Origin">
+        <PropertyRef Name="ID_Origin" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Origin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Passe__4F7CD00D">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Cl__ID_Fl__5629CD9C">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Flight_Class" Type="Self.Flight_Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Flight_Class">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Se__ID_Fl__59063A47">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Flight_Seats" Type="Self.Flight_Seats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Flight_Seats">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Itinerari__ID_Fl__0B91BA14">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Itinerario" Type="Self.Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Itinerari__ID_Fl__0D7A0286">
+    <End Role="Flight_Class" Type="Self.Flight_Class" Multiplicity="1" />
+    <End Role="Itinerario" Type="Self.Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Class">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_De__ID_Pa__49C3F6B7">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Destination" Type="Self.Flight_Destination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Destination">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Lu__ID_Pa__4CA06362">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Luggage" Type="Self.Flight_Luggage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Luggage">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Or__ID_Pa__440B1D61">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Origin" Type="Self.Flight_Origin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Origin">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_St__ID_Pa__46E78A0C">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Stops" Type="Self.Flight_Stops" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Stops">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Passport__ID_Pas__3B75D760">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Passport">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visa__ID_Passeng__403A8C7D">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Visa" Type="Self.Visa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Visa">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visa__ID_Passpor__3F466844">
+    <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+    <End Role="Visa" Type="Self.Visa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passport">
+        <PropertyRef Name="ID_Passport" />
+      </Principal>
+      <Dependent Role="Visa">
+        <PropertyRef Name="ID_Passport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StarAllianceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cancellation" EntityType="Self.Cancellation" />
+    <EntitySet Name="Det_Ticket" EntityType="Self.Det_Ticket" />
+    <EntitySet Name="Flight" EntityType="Self.Flight" />
+    <EntitySet Name="Flight_Class" EntityType="Self.Flight_Class" />
+    <EntitySet Name="Flight_Destination" EntityType="Self.Flight_Destination" />
+    <EntitySet Name="Flight_Luggage" EntityType="Self.Flight_Luggage" />
+    <EntitySet Name="Flight_Origin" EntityType="Self.Flight_Origin" />
+    <EntitySet Name="Flight_Seats" EntityType="Self.Flight_Seats" />
+    <EntitySet Name="Flight_Stops" EntityType="Self.Flight_Stops" />
+    <EntitySet Name="Itinerario" EntityType="Self.Itinerario" />
+    <EntitySet Name="Passenger" EntityType="Self.Passenger" />
+    <EntitySet Name="Passport" EntityType="Self.Passport" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <EntitySet Name="Visa" EntityType="Self.Visa" />
+    <AssociationSet Name="FK__Cancellat__ID_Pa__6C190EBB" Association="Self.FK__Cancellat__ID_Pa__6C190EBB">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Cancellation" EntitySet="Cancellation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cancellat__ID_Ti__6B24EA82" Association="Self.FK__Cancellat__ID_Ti__6B24EA82">
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+      <End Role="Cancellation" EntitySet="Cancellation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Fl__5BE2A6F2" Association="Self.FK__Det_Ticke__ID_Fl__5BE2A6F2">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Fl__5CD6CB2B" Association="Self.FK__Det_Ticke__ID_Fl__5CD6CB2B">
+      <End Role="Flight_Class" EntitySet="Flight_Class" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Pa__5DCAEF64" Association="Self.FK__Det_Ticke__ID_Pa__5DCAEF64">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Se__5EBF139D" Association="Self.FK__Det_Ticke__ID_Se__5EBF139D">
+      <End Role="Flight_Seats" EntitySet="Flight_Seats" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Ti__0C85DE4D" Association="Self.FK__Itinerari__ID_Ti__0C85DE4D">
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Desti__5165187F" Association="Self.FK__Flight__ID_Desti__5165187F">
+      <End Role="Flight_Destination" EntitySet="Flight_Destination" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Fligh__52593CB8" Association="Self.FK__Flight__ID_Fligh__52593CB8">
+      <End Role="Flight_Stops" EntitySet="Flight_Stops" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Lugga__534D60F1" Association="Self.FK__Flight__ID_Lugga__534D60F1">
+      <End Role="Flight_Luggage" EntitySet="Flight_Luggage" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Origi__5070F446" Association="Self.FK__Flight__ID_Origi__5070F446">
+      <End Role="Flight_Origin" EntitySet="Flight_Origin" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Passe__4F7CD00D" Association="Self.FK__Flight__ID_Passe__4F7CD00D">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Cl__ID_Fl__5629CD9C" Association="Self.FK__Flight_Cl__ID_Fl__5629CD9C">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Flight_Class" EntitySet="Flight_Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Se__ID_Fl__59063A47" Association="Self.FK__Flight_Se__ID_Fl__59063A47">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Flight_Seats" EntitySet="Flight_Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Fl__0B91BA14" Association="Self.FK__Itinerari__ID_Fl__0B91BA14">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Fl__0D7A0286" Association="Self.FK__Itinerari__ID_Fl__0D7A0286">
+      <End Role="Flight_Class" EntitySet="Flight_Class" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_De__ID_Pa__49C3F6B7" Association="Self.FK__Flight_De__ID_Pa__49C3F6B7">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Destination" EntitySet="Flight_Destination" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Lu__ID_Pa__4CA06362" Association="Self.FK__Flight_Lu__ID_Pa__4CA06362">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Luggage" EntitySet="Flight_Luggage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Or__ID_Pa__440B1D61" Association="Self.FK__Flight_Or__ID_Pa__440B1D61">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Origin" EntitySet="Flight_Origin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_St__ID_Pa__46E78A0C" Association="Self.FK__Flight_St__ID_Pa__46E78A0C">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Stops" EntitySet="Flight_Stops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Passport__ID_Pas__3B75D760" Association="Self.FK__Passport__ID_Pas__3B75D760">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Passport" EntitySet="Passport" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visa__ID_Passeng__403A8C7D" Association="Self.FK__Visa__ID_Passeng__403A8C7D">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Visa" EntitySet="Visa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visa__ID_Passpor__3F466844" Association="Self.FK__Visa__ID_Passpor__3F466844">
+      <End Role="Passport" EntitySet="Passport" />
+      <End Role="Visa" EntitySet="Visa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Pa__0F624AF8" Association="StarAllianceModel.FK__Itinerari__ID_Pa__0F624AF8">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <FunctionImport Name="LlenarItinerario">
+      <Parameter Name="ID_Flight" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Ticket" Mode="In" Type="Int32" />
+      <Parameter Name="Airline" Mode="In" Type="String" />
+      <Parameter Name="Country_Origin" Mode="In" Type="String" />
+      <Parameter Name="Departure_DateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="Country_Destination" Mode="In" Type="String" />
+      <Parameter Name="Arrival_DateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="ID_Flight_Class" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarBoleto">
+      <Parameter Name="ID_Flight" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Passenger" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Seat" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Flight_Class" Mode="In" Type="Int32" />
+      <Parameter Name="Bought_Ticket" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarCancelacion">
+      <Parameter Name="ID_Ticket" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Passenger" Mode="In" Type="Int32" />
+      <Parameter Name="Cancellation_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Reason" Mode="In" Type="String" />
+      <Parameter Name="Refund" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarPasajero">
+      <Parameter Name="Fst_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Snd_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Fst_Apellido" Mode="In" Type="String" />
+      <Parameter Name="Snd_Apellido" Mode="In" Type="String" />
+      <Parameter Name="Birthdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Identification" Mode="In" Type="String" />
+      <Parameter Name="Phone_Number" Mode="In" Type="String" />
+      <Parameter Name="Adress" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarPasaporte">
+      <Parameter Name="ID_Passenger" Mode="In" Type="Int32" />
+      <Parameter Name="Passport_Type" Mode="In" Type="String" />
+      <Parameter Name="Country_Code" Mode="In" Type="String" />
+      <Parameter Name="Passport_Num" Mode="In" Type="String" />
+      <Parameter Name="Nationality" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ExpiryDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarVisa">
+      <Parameter Name="ID_Passport" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Passenger" Mode="In" Type="Int32" />
+      <Parameter Name="Issuing_Postname" Mode="In" Type="String" />
+      <Parameter Name="Control_Number" Mode="In" Type="String" />
+      <Parameter Name="Visa_Num" Mode="In" Type="String" />
+      <Parameter Name="Visa_Type" Mode="In" Type="String" />
+      <Parameter Name="Visa_Class" Mode="In" Type="String" />
+      <Parameter Name="Entries" Mode="In" Type="String" />
+      <Parameter Name="Annotation" Mode="In" Type="String" />
+      <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ExpiryDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Verify_Boleto">
+      <Parameter Name="ID_Passenger" Mode="In" Type="Int32" />
+      <Parameter Name="Mensaje" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarUsuario">
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Clave" Mode="In" Type="String" />
+      <Parameter Name="Registrado" Mode="InOut" Type="Boolean" />
+      <Parameter Name="Mensaje" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ValidarUsuario" ReturnType="Collection(Int32)">
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Clave" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <Association Name="FK__Itinerari__ID_Pa__0F624AF8">
+    <End Type="StarAllianceModel.Passenger" Role="Passenger" Multiplicity="0..1" />
+    <End Type="StarAllianceModel.Itinerario" Role="Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

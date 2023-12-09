@@ -1,0 +1,64 @@
+﻿@model IEnumerable<S.A.Models.Flight>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Registrar", "InsertarFlight")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Flight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passenger.ID_Passenger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flight_Origin.ID_Origin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flight_Destination.ID_Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flight_Stops.ID_FlightStops)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalSeats)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Flight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passenger.ID_Passenger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flight_Origin.ID_Origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flight_Destination.ID_Destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flight_Stops.ID_FlightStops)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalSeats)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "ActualizarFlight", new { id=item.ID_Flight }) |
+      
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_Flight })
+        </td>
+    </tr>
+}
+
+</table>

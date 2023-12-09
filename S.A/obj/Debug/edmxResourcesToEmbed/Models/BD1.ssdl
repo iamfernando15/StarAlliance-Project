@@ -1,0 +1,904 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StarAllianceModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cancellation">
+    <Key>
+      <PropertyRef Name="ID_Cancellation" />
+    </Key>
+    <Property Name="ID_Cancellation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Ticket" Type="int" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="Cancellation_Date" Type="datetime" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Refund" Type="bit" />
+  </EntityType>
+  <EntityType Name="Det_Ticket">
+    <Key>
+      <PropertyRef Name="ID_Ticket" />
+    </Key>
+    <Property Name="ID_Ticket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Flight" Type="int" Nullable="false" />
+    <Property Name="ID_Flight_Class" Type="int" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="ID_Seat" Type="int" Nullable="false" />
+    <Property Name="Bought_Ticket" Type="datetime" Nullable="false" />
+    <Property Name="Ticket_Status" Type="bit" />
+    <Property Name="Total_Price" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="ID_Flight" />
+    </Key>
+    <Property Name="ID_Flight" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="ID_Origin" Type="int" Nullable="false" />
+    <Property Name="ID_Destination" Type="int" Nullable="false" />
+    <Property Name="ID_FlightStops" Type="int" Nullable="false" />
+    <Property Name="ID_Luggage" Type="int" Nullable="false" />
+    <Property Name="TotalSeats" Type="int" />
+  </EntityType>
+  <EntityType Name="Flight_Class">
+    <Key>
+      <PropertyRef Name="ID_Flight_Class" />
+    </Key>
+    <Property Name="ID_Flight_Class" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Flight" Type="int" Nullable="false" />
+    <Property Name="Bussines_Class" Type="bit" />
+    <Property Name="Premium_Class" Type="bit" />
+    <Property Name="Tourist_Class" Type="bit" />
+  </EntityType>
+  <EntityType Name="Flight_Destination">
+    <Key>
+      <PropertyRef Name="ID_Destination" />
+    </Key>
+    <Property Name="ID_Destination" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="Airport" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Destiny_Price" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="ArrivalDate" Type="date" Nullable="false" />
+    <Property Name="Arrival_Time" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flight_Luggage">
+    <Key>
+      <PropertyRef Name="ID_Luggage" />
+    </Key>
+    <Property Name="ID_Luggage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="Luggage_Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Luggage_Weight" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Extra_Luggage" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Total_Extra" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Flight_Origin">
+    <Key>
+      <PropertyRef Name="ID_Origin" />
+    </Key>
+    <Property Name="ID_Origin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="Airport" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Airline" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="DepartureDate" Type="datetime" Nullable="false" />
+    <Property Name="Departure_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flight_Seats">
+    <Key>
+      <PropertyRef Name="ID_Seat" />
+    </Key>
+    <Property Name="ID_Seat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Flight" Type="int" Nullable="false" />
+    <Property Name="Seat_Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Seat_Number" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Assigned_Seats" Type="int" />
+  </EntityType>
+  <EntityType Name="Flight_Stops">
+    <Key>
+      <PropertyRef Name="ID_FlightStops" />
+    </Key>
+    <Property Name="ID_FlightStops" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="Transhipment" Type="bit" Nullable="false" />
+    <Property Name="Partner_Airline" Type="bit" Nullable="false" />
+    <Property Name="Airport" Type="nvarchar" MaxLength="30" />
+    <Property Name="StopTime" Type="datetime" />
+    <Property Name="Transhipment_Price" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="PA_Price" Type="decimal" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="Itinerario">
+    <Key>
+      <PropertyRef Name="ID_Itinerary" />
+    </Key>
+    <Property Name="ID_Itinerary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Flight" Type="int" Nullable="false" />
+    <Property Name="ID_Ticket" Type="int" Nullable="false" />
+    <Property Name="Airline" Type="nvarchar" MaxLength="30" />
+    <Property Name="Country_Origin" Type="nvarchar" MaxLength="30" />
+    <Property Name="Departure_DateTime" Type="datetime" />
+    <Property Name="Country_Destination" Type="nvarchar" MaxLength="30" />
+    <Property Name="Arrival_DateTime" Type="datetime" />
+    <Property Name="ID_Flight_Class" Type="int" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="ID_Passenger" />
+    </Key>
+    <Property Name="ID_Passenger" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fst_Nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Snd_Nombre" Type="nvarchar" MaxLength="30" />
+    <Property Name="Fst_Apellido" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Snd_Apellido" Type="nvarchar" MaxLength="30" />
+    <Property Name="Birthdate" Type="date" Nullable="false" />
+    <Property Name="Identification" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="Phone_Number" Type="char" MaxLength="8" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Passport">
+    <Key>
+      <PropertyRef Name="ID_Passport" />
+    </Key>
+    <Property Name="ID_Passport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="Passport_Type" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Country_Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Passport_Num" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="IssueDate" Type="date" Nullable="false" />
+    <Property Name="ExpiryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Visa">
+    <Key>
+      <PropertyRef Name="ID_Visa" />
+    </Key>
+    <Property Name="ID_Visa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Passport" Type="int" Nullable="false" />
+    <Property Name="ID_Passenger" Type="int" Nullable="false" />
+    <Property Name="Issuing_Postname" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Control_Number" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Visa_Num" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="Visa_Type" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Visa_Class" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Entries" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Annotation" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="IssueDate" Type="date" Nullable="false" />
+    <Property Name="ExpiryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Cancellat__ID_Pa__6C190EBB">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Cancellation" Type="Self.Cancellation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Cancellation">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cancellat__ID_Ti__6B24EA82">
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="1" />
+    <End Role="Cancellation" Type="Self.Cancellation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Det_Ticket">
+        <PropertyRef Name="ID_Ticket" />
+      </Principal>
+      <Dependent Role="Cancellation">
+        <PropertyRef Name="ID_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Fl__5BE2A6F2">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Fl__5CD6CB2B">
+    <End Role="Flight_Class" Type="Self.Flight_Class" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Class">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Pa__5DCAEF64">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Det_Ticke__ID_Se__5EBF139D">
+    <End Role="Flight_Seats" Type="Self.Flight_Seats" Multiplicity="1" />
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Seats">
+        <PropertyRef Name="ID_Seat" />
+      </Principal>
+      <Dependent Role="Det_Ticket">
+        <PropertyRef Name="ID_Seat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Desti__5165187F">
+    <End Role="Flight_Destination" Type="Self.Flight_Destination" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Destination">
+        <PropertyRef Name="ID_Destination" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Destination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Fligh__52593CB8">
+    <End Role="Flight_Stops" Type="Self.Flight_Stops" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Stops">
+        <PropertyRef Name="ID_FlightStops" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_FlightStops" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Lugga__534D60F1">
+    <End Role="Flight_Luggage" Type="Self.Flight_Luggage" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Luggage">
+        <PropertyRef Name="ID_Luggage" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Luggage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Origi__5070F446">
+    <End Role="Flight_Origin" Type="Self.Flight_Origin" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Origin">
+        <PropertyRef Name="ID_Origin" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Origin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__ID_Passe__4F7CD00D">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Cl__ID_Fl__5629CD9C">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Flight_Class" Type="Self.Flight_Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Flight_Class">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_De__ID_Pa__49C3F6B7">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Destination" Type="Self.Flight_Destination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Destination">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Lu__ID_Pa__4CA06362">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Luggage" Type="Self.Flight_Luggage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Luggage">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Or__ID_Pa__440B1D61">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Origin" Type="Self.Flight_Origin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Origin">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_Se__ID_Fl__59063A47">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Flight_Seats" Type="Self.Flight_Seats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Flight_Seats">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight_St__ID_Pa__46E78A0C">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Flight_Stops" Type="Self.Flight_Stops" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Flight_Stops">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Itinerari__ID_Fl__0B91BA14">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+    <End Role="Itinerario" Type="Self.Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="ID_Flight" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Flight" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Itinerari__ID_Fl__0D7A0286">
+    <End Role="Flight_Class" Type="Self.Flight_Class" Multiplicity="1" />
+    <End Role="Itinerario" Type="Self.Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Class">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Flight_Class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Itinerari__ID_Pa__0F624AF8">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="0..1" />
+    <End Role="Itinerario" Type="Self.Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Itinerari__ID_Ti__0C85DE4D">
+    <End Role="Det_Ticket" Type="Self.Det_Ticket" Multiplicity="1" />
+    <End Role="Itinerario" Type="Self.Itinerario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Det_Ticket">
+        <PropertyRef Name="ID_Ticket" />
+      </Principal>
+      <Dependent Role="Itinerario">
+        <PropertyRef Name="ID_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Passport__ID_Pas__3B75D760">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Passport">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visa__ID_Passeng__403A8C7D">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Visa" Type="Self.Visa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_Passenger" />
+      </Principal>
+      <Dependent Role="Visa">
+        <PropertyRef Name="ID_Passenger" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visa__ID_Passpor__3F466844">
+    <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+    <End Role="Visa" Type="Self.Visa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passport">
+        <PropertyRef Name="ID_Passport" />
+      </Principal>
+      <Dependent Role="Visa">
+        <PropertyRef Name="ID_Passport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ActualizarAsientosReservados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Baj_DeltFlightDestination" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Destination" Type="int" Mode="In" />
+  </Function>
+  <Function Name="BAJA_FlightOrigin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Origin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CalculatePassengerRefund" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Cancellation_Reason" Type="nvarchar" Mode="In" />
+    <Parameter Name="RefundAmount" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="Del_BjaFlightLuggage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Luggage" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteFlightStop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_FlightStops" Type="int" Mode="In" />
+  </Function>
+  <Function Name="FACTURA_TICKET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Ticket" Type="int" Mode="In" />
+    <Parameter Name="id_class" Type="int" Mode="In" />
+    <Parameter Name="Id_destination" Type="int" Mode="In" />
+    <Parameter Name="ID_STOP" Type="int" Mode="In" />
+    <Parameter Name="id_luggage" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="InsertFlightDestination" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Airport" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="nvarchar" Mode="In" />
+    <Parameter Name="City" Type="nvarchar" Mode="In" />
+    <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Destiny_Price" Type="decimal" Mode="In" />
+    <Parameter Name="ArrivalDate" Type="date" Mode="In" />
+    <Parameter Name="Arrival_Time" Type="time" Mode="In" />
+  </Function>
+  <Function Name="InsertFlightLuggage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Luggage_Type" Type="nvarchar" Mode="In" />
+    <Parameter Name="Luggage_Weight" Type="decimal" Mode="In" />
+    <Parameter Name="Extra_Luggage" Type="decimal" Mode="In" />
+    <Parameter Name="Total_Extra" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="InsertFlightOrigin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Airport" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="nvarchar" Mode="In" />
+    <Parameter Name="City" Type="nvarchar" Mode="In" />
+    <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Airline" Type="nvarchar" Mode="In" />
+    <Parameter Name="DepartureDate" Type="datetime" Mode="In" />
+    <Parameter Name="Departure_Time" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="InsertFlightStop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Transhipment" Type="bit" Mode="In" />
+    <Parameter Name="Partner_Airline" Type="bit" Mode="In" />
+    <Parameter Name="Airport" Type="nvarchar" Mode="In" />
+    <Parameter Name="StopTime" Type="datetime" Mode="In" />
+    <Parameter Name="Transhipment_Price" Type="decimal" Mode="In" />
+    <Parameter Name="PA_Price" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="LlenarItinerario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="ID_Ticket" Type="int" Mode="In" />
+    <Parameter Name="Airline" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country_Origin" Type="nvarchar" Mode="In" />
+    <Parameter Name="Departure_DateTime" Type="datetime" Mode="In" />
+    <Parameter Name="Country_Destination" Type="nvarchar" Mode="In" />
+    <Parameter Name="Arrival_DateTime" Type="datetime" Mode="In" />
+    <Parameter Name="ID_Flight_Class" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RegistrarBoleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="ID_Flight_Class" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="ID_Seat" Type="int" Mode="In" />
+    <Parameter Name="Bought_Ticket" Type="datetime" Mode="In" />
+    <Parameter Name="Ticket_Status" Type="bit" Mode="In" />
+    <Parameter Name="Total_Price" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="RegistrarCancelacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Ticket" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Cancellation_Date" Type="datetime" Mode="In" />
+    <Parameter Name="Reason" Type="nvarchar" Mode="In" />
+    <Parameter Name="Refund" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="RegistrarNumeroAsientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="TotalSeats" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RegistrarPasajero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fst_Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="Snd_Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="Fst_Apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="Snd_Apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthdate" Type="date" Mode="In" />
+    <Parameter Name="Identification" Type="char" Mode="In" />
+    <Parameter Name="Phone_Number" Type="char" Mode="In" />
+    <Parameter Name="Adress" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="RegistrarPasaporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Passport_Type" Type="char" Mode="In" />
+    <Parameter Name="Country_Code" Type="nvarchar" Mode="In" />
+    <Parameter Name="Passport_Num" Type="nvarchar" Mode="In" />
+    <Parameter Name="Nationality" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="char" Mode="In" />
+    <Parameter Name="IssueDate" Type="date" Mode="In" />
+    <Parameter Name="ExpiryDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="RegistrarVisa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passport" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Issuing_Postname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Control_Number" Type="nvarchar" Mode="In" />
+    <Parameter Name="Visa_Num" Type="nvarchar" Mode="In" />
+    <Parameter Name="Visa_Type" Type="char" Mode="In" />
+    <Parameter Name="Visa_Class" Type="nvarchar" Mode="In" />
+    <Parameter Name="Entries" Type="char" Mode="In" />
+    <Parameter Name="Annotation" Type="nvarchar" Mode="In" />
+    <Parameter Name="IssueDate" Type="date" Mode="In" />
+    <Parameter Name="ExpiryDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteCancellation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Cancellation" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteDetTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Ticket" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteFlightClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight_Class" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteFlightSeat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Seat" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteItinerary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Itinerary" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_InsertFlight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="ID_Origin" Type="int" Mode="In" />
+    <Parameter Name="ID_Destination" Type="int" Mode="In" />
+    <Parameter Name="ID_FlightStops" Type="int" Mode="In" />
+    <Parameter Name="ID_Luggage" Type="int" Mode="In" />
+    <Parameter Name="TotalSeats" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_InsertFlightClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="Bussines_Class" Type="bit" Mode="In" />
+    <Parameter Name="Premium_Class" Type="bit" Mode="In" />
+    <Parameter Name="Tourist_Class" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_InsertFlightSeat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="Seat_Location" Type="nvarchar" Mode="In" />
+    <Parameter Name="Seat_Number" Type="nvarchar" Mode="In" />
+    <Parameter Name="Assigned_Seats" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_RegistrarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+    <Parameter Name="Clave" Type="varchar" Mode="In" />
+    <Parameter Name="Registrado" Type="bit" Mode="InOut" />
+    <Parameter Name="Mensaje" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateCancellation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Cancellation" Type="int" Mode="In" />
+    <Parameter Name="ID_Ticket" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Cancellation_Date" Type="datetime" Mode="In" />
+    <Parameter Name="Reason" Type="nvarchar" Mode="In" />
+    <Parameter Name="Refund" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateDetTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Ticket" Type="int" Mode="In" />
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="ID_Flight_Class" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="ID_Seat" Type="int" Mode="In" />
+    <Parameter Name="Bought_Ticket" Type="datetime" Mode="In" />
+    <Parameter Name="Ticket_Status" Type="bit" Mode="In" />
+    <Parameter Name="Total_Price" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateFlight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="ID_Origin" Type="int" Mode="In" />
+    <Parameter Name="ID_Destination" Type="int" Mode="In" />
+    <Parameter Name="ID_FlightStops" Type="int" Mode="In" />
+    <Parameter Name="ID_Luggage" Type="int" Mode="In" />
+    <Parameter Name="TotalSeats" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateFlightClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Flight_Class" Type="int" Mode="In" />
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="Bussines_Class" Type="bit" Mode="In" />
+    <Parameter Name="Premium_Class" Type="bit" Mode="In" />
+    <Parameter Name="Tourist_Class" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateFlightSeat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Seat" Type="int" Mode="In" />
+    <Parameter Name="ID_Flight" Type="int" Mode="In" />
+    <Parameter Name="Seat_Location" Type="nvarchar" Mode="In" />
+    <Parameter Name="Seat_Number" Type="nvarchar" Mode="In" />
+    <Parameter Name="Assigned_Seats" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdatePassport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passport" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Passport_Type" Type="char" Mode="In" />
+    <Parameter Name="Country_Code" Type="nvarchar" Mode="In" />
+    <Parameter Name="Passport_Num" Type="nvarchar" Mode="In" />
+    <Parameter Name="Nationality" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="char" Mode="In" />
+    <Parameter Name="IssueDate" Type="date" Mode="In" />
+    <Parameter Name="ExpiryDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateVisa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Visa" Type="int" Mode="In" />
+    <Parameter Name="ID_Passport" Type="int" Mode="In" />
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Issuing_Postname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Control_Number" Type="nvarchar" Mode="In" />
+    <Parameter Name="Visa_Num" Type="nvarchar" Mode="In" />
+    <Parameter Name="Visa_Type" Type="char" Mode="In" />
+    <Parameter Name="Visa_Class" Type="nvarchar" Mode="In" />
+    <Parameter Name="Entries" Type="char" Mode="In" />
+    <Parameter Name="Annotation" Type="nvarchar" Mode="In" />
+    <Parameter Name="IssueDate" Type="date" Mode="In" />
+    <Parameter Name="ExpiryDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+    <Parameter Name="Clave" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Verify_Boleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Mensaje" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="Total_luggagePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="id_luggage" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateFlightDestination" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Destination" Type="int" Mode="In" />
+    <Parameter Name="Airport" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="nvarchar" Mode="In" />
+    <Parameter Name="City" Type="nvarchar" Mode="In" />
+    <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Destiny_Price" Type="decimal" Mode="In" />
+    <Parameter Name="ArrivalDate" Type="date" Mode="In" />
+    <Parameter Name="Arrival_Time" Type="time" Mode="In" />
+  </Function>
+  <Function Name="UpdateFlightLuggage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Luggage" Type="int" Mode="In" />
+    <Parameter Name="Luggage_Type" Type="nvarchar" Mode="In" />
+    <Parameter Name="Luggage_Weight" Type="decimal" Mode="In" />
+    <Parameter Name="Extra_Luggage" Type="decimal" Mode="In" />
+    <Parameter Name="Total_Extra" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="UpdateFlightOrigin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Origin" Type="int" Mode="In" />
+    <Parameter Name="Airport" Type="nvarchar" Mode="In" />
+    <Parameter Name="Airline" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateFlightStop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_FlightStops" Type="int" Mode="In" />
+    <Parameter Name="Transhipment" Type="bit" Mode="In" />
+    <Parameter Name="Partner_Airline" Type="bit" Mode="In" />
+    <Parameter Name="Airport" Type="nvarchar" Mode="In" />
+    <Parameter Name="StopTime" Type="datetime" Mode="In" />
+    <Parameter Name="Transhipment_Price" Type="decimal" Mode="In" />
+    <Parameter Name="PA_Price" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="UpdatePassenger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Passenger" Type="int" Mode="In" />
+    <Parameter Name="Phone_Number" Type="char" Mode="In" />
+    <Parameter Name="Adress" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="StarAllianceModel1StoreContainer">
+    <EntitySet Name="Cancellation" EntityType="Self.Cancellation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Det_Ticket" EntityType="Self.Det_Ticket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight_Class" EntityType="Self.Flight_Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight_Destination" EntityType="Self.Flight_Destination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight_Luggage" EntityType="Self.Flight_Luggage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight_Origin" EntityType="Self.Flight_Origin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight_Seats" EntityType="Self.Flight_Seats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight_Stops" EntityType="Self.Flight_Stops" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Itinerario" EntityType="Self.Itinerario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visa" EntityType="Self.Visa" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Cancellat__ID_Pa__6C190EBB" Association="Self.FK__Cancellat__ID_Pa__6C190EBB">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Cancellation" EntitySet="Cancellation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cancellat__ID_Ti__6B24EA82" Association="Self.FK__Cancellat__ID_Ti__6B24EA82">
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+      <End Role="Cancellation" EntitySet="Cancellation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Fl__5BE2A6F2" Association="Self.FK__Det_Ticke__ID_Fl__5BE2A6F2">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Fl__5CD6CB2B" Association="Self.FK__Det_Ticke__ID_Fl__5CD6CB2B">
+      <End Role="Flight_Class" EntitySet="Flight_Class" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Pa__5DCAEF64" Association="Self.FK__Det_Ticke__ID_Pa__5DCAEF64">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Det_Ticke__ID_Se__5EBF139D" Association="Self.FK__Det_Ticke__ID_Se__5EBF139D">
+      <End Role="Flight_Seats" EntitySet="Flight_Seats" />
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Desti__5165187F" Association="Self.FK__Flight__ID_Desti__5165187F">
+      <End Role="Flight_Destination" EntitySet="Flight_Destination" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Fligh__52593CB8" Association="Self.FK__Flight__ID_Fligh__52593CB8">
+      <End Role="Flight_Stops" EntitySet="Flight_Stops" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Lugga__534D60F1" Association="Self.FK__Flight__ID_Lugga__534D60F1">
+      <End Role="Flight_Luggage" EntitySet="Flight_Luggage" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Origi__5070F446" Association="Self.FK__Flight__ID_Origi__5070F446">
+      <End Role="Flight_Origin" EntitySet="Flight_Origin" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__ID_Passe__4F7CD00D" Association="Self.FK__Flight__ID_Passe__4F7CD00D">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Cl__ID_Fl__5629CD9C" Association="Self.FK__Flight_Cl__ID_Fl__5629CD9C">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Flight_Class" EntitySet="Flight_Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_De__ID_Pa__49C3F6B7" Association="Self.FK__Flight_De__ID_Pa__49C3F6B7">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Destination" EntitySet="Flight_Destination" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Lu__ID_Pa__4CA06362" Association="Self.FK__Flight_Lu__ID_Pa__4CA06362">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Luggage" EntitySet="Flight_Luggage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Or__ID_Pa__440B1D61" Association="Self.FK__Flight_Or__ID_Pa__440B1D61">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Origin" EntitySet="Flight_Origin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_Se__ID_Fl__59063A47" Association="Self.FK__Flight_Se__ID_Fl__59063A47">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Flight_Seats" EntitySet="Flight_Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight_St__ID_Pa__46E78A0C" Association="Self.FK__Flight_St__ID_Pa__46E78A0C">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Flight_Stops" EntitySet="Flight_Stops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Fl__0B91BA14" Association="Self.FK__Itinerari__ID_Fl__0B91BA14">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Fl__0D7A0286" Association="Self.FK__Itinerari__ID_Fl__0D7A0286">
+      <End Role="Flight_Class" EntitySet="Flight_Class" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Pa__0F624AF8" Association="Self.FK__Itinerari__ID_Pa__0F624AF8">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Itinerari__ID_Ti__0C85DE4D" Association="Self.FK__Itinerari__ID_Ti__0C85DE4D">
+      <End Role="Det_Ticket" EntitySet="Det_Ticket" />
+      <End Role="Itinerario" EntitySet="Itinerario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Passport__ID_Pas__3B75D760" Association="Self.FK__Passport__ID_Pas__3B75D760">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Passport" EntitySet="Passport" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visa__ID_Passeng__403A8C7D" Association="Self.FK__Visa__ID_Passeng__403A8C7D">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Visa" EntitySet="Visa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visa__ID_Passpor__3F466844" Association="Self.FK__Visa__ID_Passpor__3F466844">
+      <End Role="Passport" EntitySet="Passport" />
+      <End Role="Visa" EntitySet="Visa" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<S.A.Models.Passenger>
+
+@{
+	ViewBag.Title = "Principal";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+	@Html.ActionLink("Registrar", "RegistrarPasajero")
+	
+</p>
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">Información de pasajeros</h6>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.Fst_Nombre)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Snd_Nombre)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Fst_Apellido)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Snd_Apellido)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Birthdate)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Identification)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Phone_Number)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Adress)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.Email)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Fst_Nombre)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Snd_Nombre)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Fst_Apellido)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Snd_Apellido)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Birthdate)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Identification)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Phone_Number)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Adress)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Email)
+							</td>
+							<td>
+								@Html.ActionLink("Editar", "UpdatePassenger", new { id = item.ID_Passenger }) |
+								@Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Passenger })
+							</td>
+						</tr>
+					}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+
+
